@@ -1,0 +1,145 @@
+= Sinatra LinkedIn
+Provides helpers for accessing the LinkedIn API in Sinatra applications.
+
+Author:: Bob Nadler, Jr. (bnadler@cyrusinnovation.com)
+
+== Notes / Use
+=== Installation
+    gem install sinatra-linkedin
+
+or if using Bundler, add to your Gemfile:
+    gem sinatra-linkedin
+
+then run
+    bundle install
+
+=== Quickstart
+Before using you'll need to acquire an API key from LinkedIn. Go to
+https://developer.linkedin.com/ to obtain your key.
+
+Sinatra LinkedIn can be used in either "classic" or "modular" Sinatra apps. For
+"classic" apps, you only need to require the sinatra-linkedin module and set
+your API key and API secret.
+    require 'sinatra'
+    require 'sinatra/linkedin'
+
+    set :linkedin_api_key, 'your api key'
+    set :linkedin_api_secret, 'your api secret'
+
+    get '/public' do
+      if authorized?
+        "Welcome back!"
+      else
+        "Oops, you haven't logged in yet. Please <a href='/auth'>login</a>"
+      end
+    end
+
+    get '/private' do
+      authorize!
+      "Thanks for logging in!"
+    end
+
+It works the same way with a "modular" app; the only difference is that you must
+register Sinatra LinkedIn explicitly.
+    require 'sinatra/base'
+    require 'sinatra/linkedin'
+
+    class MyApp < Sinatra::Base
+      register Sinatra::Linkedin
+
+      set :linkedin_api_key, 'your api key'
+      set :linkedin_api_secret, 'your api secret'
+
+      get '/public' do
+        if authorized?
+          "Welcome back!"
+        else
+          "Oops, you haven't logged in yet. Please <a href='/auth'>login</a>"
+        end
+      end
+
+      get '/private' do
+        authorize!
+        "Thanks for logging in!"
+      end
+    end
+
+==== Routes
+Sinatra LinkedIn provides several routes to help you:
+    /auth:: authorizes the user by setting up a request token and redirecting
+to the LinkedIn authorization page. Once the user has granted access (or denied
+it) they will be redirected to /auth/callback (see below).
+
+    /auth/callback:: stores the token and secret in the session, then redirects
+to the root URL.
+
+    /auth/logout:: deletes the token and secret from the session and redirects
+the user to the root URL.
+
+==== Helper Methods
+Sinatra LinkedIn provides these helper methods:
+    authorized?:: returns true if the user has authenticated with their
+LinkedIn credentials.
+
+    authorize!:: redirects the user to the /auth route unless they have already
+been authenticated.
+
+    client:: provides a handle to the +LinkedIn::Client+ class. Refer to the
+LinkedIn gem documentation[https://github.com/pengwynn/linkedin] for usage
+information.
+
+Refer to http://example.com for more detailed documentation and examples.
+
+== Contributing
+=== Issues / Roadmap
+Use GitHub issues[http://github.com/bnadlerjr/sinatra-linkedin/issues] for
+reporting bug and feature requests.
+
+=== Patches / Pull Requests
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don’t break it in a future version
+  unintentionally.
+* Commit, do not mess with rakefile, version, or history (if you want to have
+  your own version, that is fine but bump version in a commit by itself I can
+  ignore when I pull).
+* Send me a pull request. Bonus points for topic branches.
+
+=== Project Layout
+/lib::
+    Main project source code.
+
+/test::
+    All test source code and data samples.
+
+Gemfile::
+    Dependency management with Bundler.
+
+Rakefile::
+    Rake tasks for the project. Use "rake -T" to see a list of available tasks.
+
+README.rdoc::
+    This file.
+
+== License
+(The MIT License)
+
+Copyright (c) 2012 Bob Nadler, Jr.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
