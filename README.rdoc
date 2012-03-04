@@ -1,5 +1,7 @@
 = Sinatra LinkedIn
-Provides helpers for accessing the LinkedIn API in Sinatra applications.
+Provides helpers for accessing the LinkedIn API in Sinatra applications. Relies
+on the {LinkedIn gem}[https://github.com/pengwynn/linkedin] to do the heavy
+lifting.
 
 Author:: Bob Nadler, Jr. (bnadler@cyrusinnovation.com)
 
@@ -14,8 +16,8 @@ then run
     bundle install
 
 === Quickstart
-Before using you'll need to acquire an API key from LinkedIn. Go to
-https://developer.linkedin.com/ to obtain your key.
+Before using you'll need to acquire an API key from LinkedIn. Go to the
+{LinkedIn Developer Portal}[https://developer.linkedin.com/] to obtain your key.
 
 Sinatra LinkedIn can be used in either "classic" or "modular" Sinatra apps. For
 "classic" apps, you only need to require the sinatra-linkedin module and set
@@ -66,27 +68,32 @@ register Sinatra LinkedIn explicitly.
 
 ==== Routes
 Sinatra LinkedIn provides several routes to help you:
-    /auth:: authorizes the user by setting up a request token and redirecting
-to the LinkedIn authorization page. Once the user has granted access (or denied
-it) they will be redirected to /auth/callback (see below).
+/auth::
+    authorizes the user by setting up a request token and redirecting to
+    the LinkedIn authorization page. Once the user has granted access (or
+    denied it) they will be redirected to /auth/callback (see below).
 
-    /auth/callback:: stores the token and secret in the session, then redirects
-to the root URL.
+/auth/callback::
+    stores the token and secret in the session, then redirects to the root
+    URL.
 
-    /auth/logout:: deletes the token and secret from the session and redirects
-the user to the root URL.
+/auth/logout::
+    deletes the token and secret from the session and redirects the user to
+    the root URL.
 
 ==== Helper Methods
 Sinatra LinkedIn provides these helper methods:
-    authorized?:: returns true if the user has authenticated with their
-LinkedIn credentials.
+authorized?::
+    returns true if the user has authenticated with their LinkedIn
+    credentials.
 
-    authorize!:: redirects the user to the /auth route unless they have already
-been authenticated.
+authorize!::
+    redirects the user to the /auth route unless they have already been
+    authenticated.
 
-    client:: provides a handle to the +LinkedIn::Client+ class. Refer to the
-LinkedIn gem documentation[https://github.com/pengwynn/linkedin] for usage
-information.
+client::
+    provides a handle to the +LinkedIn::Client+ class. Refer to the
+    LinkedIn[https://github.com/pengwynn/linkedin] gem for usage information.
 
 Refer to http://example.com for more detailed documentation and examples.
 
