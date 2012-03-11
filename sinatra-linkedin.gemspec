@@ -6,10 +6,10 @@ Gem::Specification.new do |s|
   s.name        = "sinatra-linkedin"
   s.version     = Sinatra::Linkedin::VERSION
   s.authors     = ["Bob Nadler"]
-  s.email       = ["bnadlerjr@gmail.com"]
+  s.email       = ["bnadler@cyrusinnovation.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Provides helpers for accessing the LinkedIn API in Sinatra applications.}
+  s.description = %q{Provides helpers for accessing the LinkedIn API in Sinatra applications.}
 
   s.rubyforge_project = "sinatra-linkedin"
 
@@ -18,7 +18,12 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  # specify any dependencies here; for example:
-  # s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+  s.add_development_dependency "rake",      "~> 0.9.2"
+  s.add_development_dependency "contest",   "~> 0.1.3"
+  s.add_development_dependency "mocha",     "~> 0.10.0"
+  s.add_development_dependency "rack-test", "~> 0.6.1"
+  s.add_development_dependency "rdoc",      "~> 3.6.1"
+
+  s.add_runtime_dependency "linkedin", "~> 0.3.6"
+  s.add_runtime_dependency "sinatra",  "~> 1.3.1"
 end
