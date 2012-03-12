@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Sinatra::Linkedin::VERSION
   s.authors     = ["Bob Nadler"]
   s.email       = ["bnadler@cyrusinnovation.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/bnadlerjr/sinatra-linkedin"
   s.summary     = %q{Provides helpers for accessing the LinkedIn API in Sinatra applications.}
   s.description = %q{Provides helpers for accessing the LinkedIn API in Sinatra applications.}
 

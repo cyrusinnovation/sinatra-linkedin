@@ -10,7 +10,7 @@ Author:: Bob Nadler, Jr. (bnadler@cyrusinnovation.com)
     gem install sinatra-linkedin
 
 or if using Bundler, add to your Gemfile:
-    gem sinatra-linkedin
+    gem 'sinatra-linkedin'
 
 then run
     bundle install
@@ -94,8 +94,6 @@ authorize!::
 client::
     provides a handle to the +LinkedIn::Client+ class. Refer to the
     LinkedIn[https://github.com/pengwynn/linkedin] gem for usage information.
-
-Refer to http://example.com for more detailed documentation and examples.
 
 == Contributing
 === Issues / Roadmap
