@@ -8,8 +8,6 @@ module Sinatra
   # Relies on the {LinkedIn gem}[https://github.com/pengwynn/linkedin] to do
   # the heavy lifting.
   module Linkedin
-    class ConfigurationError < StandardError; end
-
     ##
     # Registers 3 routes that will be available in your app:
     #
