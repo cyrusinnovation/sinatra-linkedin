@@ -97,8 +97,8 @@ client::
 
 == Contributing
 === Issues / Roadmap
-Use GitHub issues[http://github.com/bnadlerjr/sinatra-linkedin/issues] for
-reporting bug and feature requests.
+Use GitHub issues[https://github.com/cyrusinnovation/sinatra-linkedin/issues]
+for reporting bug and feature requests.
 
 === Patches / Pull Requests
 * Fork the project.
