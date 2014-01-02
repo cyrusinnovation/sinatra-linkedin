@@ -25,5 +25,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rdoc",      "~> 3.6.1"
 
   s.add_runtime_dependency "linkedin", "~> 0.3.6"
-  s.add_runtime_dependency "sinatra",  "~> 1.3.1"
+  s.add_runtime_dependency "sinatra",  "~> 1.4.3"
 end
