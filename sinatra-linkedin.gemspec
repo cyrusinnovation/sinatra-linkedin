@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "contest",   "~> 0.1.3"
   s.add_development_dependency "mocha",     "~> 0.10.0"
   s.add_development_dependency "rack-test", "~> 0.6.1"
-  s.add_development_dependency "rdoc",      "~> 3.6.1"
+  s.add_development_dependency "rdoc",      "~> 4.1.0"
 
   s.add_runtime_dependency "linkedin", "~> 0.4.4"
   s.add_runtime_dependency "sinatra",  "~> 1.4.3"
